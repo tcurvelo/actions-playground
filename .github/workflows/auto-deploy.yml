@@ -1,0 +1,24 @@
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [develop]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+
+  deploy-dev:
+    needs: [check]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Deploying it to dev'
+
+  deploy-qa:
+    needs: [check]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Deploying it to qa'
