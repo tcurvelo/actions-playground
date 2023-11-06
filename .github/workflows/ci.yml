@@ -1,9 +1,19 @@
 name: CI
 
-on: [ push ]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      fail:
+        description: Force fail?
+        type: boolean
+        required: true
+        default: false
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.ref }}
+      - name: Exiting
+        run: |
+          [[ "${{ github.event.inputs.fail }}" == "true" ]] && exit 1 || exit 0
