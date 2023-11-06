@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: Exiting
         run: |
-          [[ ${{ github.event.inputs.fail }} == 'true' ]] && exit 1 || exit 0
+          [[ "${{ github.event.inputs.fail }}" == "true" ]] && exit 1 || exit 0
