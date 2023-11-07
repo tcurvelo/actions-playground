@@ -10,9 +10,6 @@ on:
         required: true
         default: false
 
-env:
-  CHECKOUT: actions/checkout@v3
-
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -26,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.job }}
-      - uses: ${{ env.CHECKOUT }}
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
