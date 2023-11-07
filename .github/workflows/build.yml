@@ -32,10 +32,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.job }}
-
-  baz:
-    needs: tests
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ github.job }}
-      - run: gh workflow list
