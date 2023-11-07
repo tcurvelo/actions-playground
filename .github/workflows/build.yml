@@ -35,4 +35,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.job }}
-      - gh workflow list
+      - run: gh workflow list
