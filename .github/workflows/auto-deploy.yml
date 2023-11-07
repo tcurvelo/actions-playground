@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     steps:
-      - run: echo "${{ github.event.workflow_run.id }} workflow passed"
+      - run: echo Deployment triggered by ${{ github.event.workflow_run.id || github.actor }}
 
   deploy-dev:
     needs: [check]
