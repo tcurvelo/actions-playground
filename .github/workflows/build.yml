@@ -18,14 +18,14 @@ jobs:
         run: |
           [[ "${{ github.event.inputs.fail }}" == "true" ]] && exit 1 || exit 0
 
-  foo: &template_job
+  foo:
     needs: tests
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.job }}
 
   bar:
-    <<: *template_job
-
-  baz:
-    <<: *template_job
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.job }}
