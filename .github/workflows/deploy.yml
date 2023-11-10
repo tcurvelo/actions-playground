@@ -1,0 +1,37 @@
+name: Deploy!
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Pick a env
+        required: true
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+      release:
+        description: "Enter a release version"
+        required: false
+
+  workflow_call:
+    inputs:
+      environment:
+        description: Pick a env
+        required: false
+        type: string
+        default: dev
+
+      release:
+        description: "Enter a release version"
+        required: false
+        default: latest
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to ${{ github.event.inputs.environment }}
+        run: echo Look ma! I am deploying ${{github.event.inputs.release}} to ${{ github.event.inputs.environment }}!

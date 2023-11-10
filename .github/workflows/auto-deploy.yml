@@ -17,12 +17,14 @@ jobs:
 
   deploy-dev:
     needs: [check]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Deploying it to dev'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: dev
+      release: latest
 
-  deploy-qa:
+  deploy-staging:
     needs: [check]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Deploying it to qa'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: staging
+      release: latest
