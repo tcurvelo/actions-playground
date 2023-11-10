@@ -34,5 +34,5 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to ${{ github.event.inputs.environment }}
-        run: echo Look ma! I am deploying ${{github.event.inputs.release}} to ${{ github.event.inputs.environment }}!
+      - name: Deploy to ${{ inputs.environment }}
+        run: echo Look ma! I am deploying ${{inputs.release}} to ${{ inputs.environment }}!
