@@ -19,12 +19,11 @@ jobs:
     needs: [check]
     uses: ./.github/workflows/deploy.yml
     with:
-      environment: dev
-      release: latest
+      environment: "dev"
+      release: "develop"
 
   deploy-staging:
     needs: [check]
     uses: ./.github/workflows/deploy.yml
     with:
       environment: staging
-      release: latest
