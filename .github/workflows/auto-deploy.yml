@@ -15,15 +15,15 @@ jobs:
     steps:
       - run: echo Deployment triggered by ${{ github.event.workflow_run.id || github.actor }}
 
-  deploy-dev:
+  dev:
     needs: [check]
     uses: ./.github/workflows/deploy.yml
     with:
       environment: "dev"
       release: "develop"
 
-  deploy-staging:
+  staging:
     needs: [check]
     uses: ./.github/workflows/deploy.yml
     with:
-      environment: staging
+      environment: ${{ github.job }}
